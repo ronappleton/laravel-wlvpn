@@ -1,0 +1,13 @@
+{
+    "name": "ronappleton/laravel-wlvpn",
+    "description": "Account management laravel library for the white label vpn service",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ron Appleton",
+            "email": "ron.appleton@gmail.com"
+        }
+    ],
+    "require": {}
+}
