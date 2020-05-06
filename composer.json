@@ -1,13 +1,40 @@
 {
-    "name": "ronappleton/laravel-wlvpn",
-    "description": "Account management laravel library for the white label vpn service",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Ron Appleton",
-            "email": "ron.appleton@gmail.com"
-        }
-    ],
-    "require": {}
+  "name": "ronappleton/laravel-wlvpn",
+  "description": "Account management laravel library for the white label vpn service",
+  "keywords": [
+    "laravel",
+    "wlvpn",
+    "vpn"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ron Appleton",
+      "email": "ron.appleton@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "guzzlehttp/guzzle": "~6.0",
+    "illuminate/support": "^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "RonAppleton\\WLVPN\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "RonAppleton\\WLVPN\\ServiceProvider"
+      ],
+      "aliases": {
+        "VPN": "RonAppleton\\WLVPN\\Facade"
+      }
+    }
+  },
+  "require-dev": {
+    "laravel/framework": "^6.0"
+  }
 }
