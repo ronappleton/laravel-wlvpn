@@ -36,7 +36,7 @@ class VPN
     /**
      * Create account is a POST request
      *
-     * @param int $userId
+     * @param string $username
      * @param string $password
      *
      * @param int|null $acctGroupId
@@ -44,10 +44,10 @@ class VPN
      * @return json
      * @throws WLVPNResponseException
      */
-    public function createAccount(int $userId, string $password, int $acctGroupId = null, $closeData = null)
+    public function createAccount(string $username, string $password, int $acctGroupId = null, $closeData = null)
     {
         $data = [
-          'cust_user_id' => $userId,
+          'cust_user_id' => $username,
           'cust_password' => $password,
           'acct_group_id' => $acctGroupId ?? config('wlvpn.acct_group_id', 0),
         ];
