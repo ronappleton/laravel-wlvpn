@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace RonAppleton\WLVPN\Services;
 
 use GuzzleHttp\Client;
@@ -55,7 +57,7 @@ class VPN
         $result = $this->client->request('POST', $this->endpoint.'customers', ['json' => $data]);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            return $result->json();
+            json_decode($result->getBody());
         }
     }
 
@@ -86,7 +88,7 @@ class VPN
         $result = $this->client->request('PUT', $this->endpoint.'customers/'.$accountId, ['json' => $data]);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            return $result->json();
+            return json_decode($result->getBody());
         }
     }
 
@@ -115,7 +117,7 @@ class VPN
         $result = $this->client->request('POST', $endpoint, ['json' => $data]);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            return $result->json();
+            return json_decode($result->getBody());
         }
     }
 
@@ -132,7 +134,7 @@ class VPN
         $result = $this->client->request('GET', $this->endpoint.'/username_exists/'.$username);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            return $result->json();
+            return json_decode($result->getBody());
         }
     }
 
@@ -199,10 +201,12 @@ class VPN
     /**
      * Delete limitations is a DELETE request
      *
+     * @param int $accountId
+     *
      * @return bool
      * @throws WLVPNResponseException
      */
-    public function deleteLimitation()
+    public function deleteLimitation(int $accountId): bool
     {
         $endpoint = $this->endpoint.'customers/'.$accountId.'/limitations';
 
@@ -228,7 +232,7 @@ class VPN
         $result = $this->client->request('GET', $endpoint);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            return $result->json();
+            return json_decode($result->getBody());
         }
     }
 }
