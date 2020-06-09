@@ -18,7 +18,8 @@
     "php": ">=7.0",
     "guzzlehttp/guzzle": "~6.0",
     "nesbot/carbon": "^2.33",
-    "myclabs/php-enum": "^1.7"
+    "myclabs/php-enum": "^1.7",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {

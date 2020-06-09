@@ -57,7 +57,7 @@ class VPN
         $result = $this->client->request('POST', $this->endpoint.'customers', ['json' => $data]);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            json_decode($result->getBody());
+            return json_decode($result->getBody()->getContents());
         }
     }
 
@@ -88,7 +88,7 @@ class VPN
         $result = $this->client->request('PUT', $this->endpoint.'customers/'.$accountId, ['json' => $data]);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            return json_decode($result->getBody());
+            return json_decode($result->getBody()->getContents());
         }
     }
 
@@ -117,7 +117,7 @@ class VPN
         $result = $this->client->request('POST', $endpoint, ['json' => $data]);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            return json_decode($result->getBody());
+            return json_decode($result->getBody()->getContents());
         }
     }
 
@@ -134,7 +134,7 @@ class VPN
         $result = $this->client->request('GET', $this->endpoint.'/username_exists/'.$username);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            return json_decode($result->getBody());
+            return json_decode($result->getBody()->getContents());
         }
     }
 
@@ -232,7 +232,7 @@ class VPN
         $result = $this->client->request('GET', $endpoint);
 
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
-            return json_decode($result->getBody());
+            return json_decode($result->getBody()->getContents());
         }
     }
 }
