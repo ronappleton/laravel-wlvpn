@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace RonAppleton\WLVPN\Enums;
 
+use Guzzle\Http\Message\Response;
 use RonAppleton\WLVPN\Exceptions\WLVPNResponseException;
 
-class Response extends \SplEnum
+class Response
 {
     const SUCCESS = 200;
     const NO_CONTENT = 204;
@@ -17,9 +20,9 @@ class Response extends \SplEnum
     const BAD_GATEWAY = 502;
     const SERVICE_UNAVAILABLE = 503;
 
-    public static function valid(\GuzzleHttp\Psr7\Response $response)
+    public static function valid(Response $response): bool
     {
-        if (in_array($response->getStatusCode(), self::getConstList())) {
+        if (in_array($response->getStatusCode(), self::getConstList(), true)) {
             return true;
         }
 
