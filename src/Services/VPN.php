@@ -70,7 +70,7 @@ class VPN
      * @param int $accountStatus
      * @param string $password
      * @param string|null $closeDate
-     * 
+     *
      * @return mixed
      * @throws WLVPNResponseException
      */
