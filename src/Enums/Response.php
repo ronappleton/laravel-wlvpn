@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RonAppleton\WLVPN\Enums;
 
-use Guzzle\Http\Message\Response;
+use Guzzle\Http\Message\Response as GuzzleResponse;
 use RonAppleton\WLVPN\Exceptions\WLVPNResponseException;
 
 class Response
@@ -20,7 +20,7 @@ class Response
     const BAD_GATEWAY = 502;
     const SERVICE_UNAVAILABLE = 503;
 
-    public static function valid(Response $response): bool
+    public static function valid(GuzzleResponse $response): bool
     {
         if (in_array($response->getStatusCode(), self::getConstList(), true)) {
             return true;
