@@ -18,7 +18,7 @@ class VPN
      */
     private $endpoint = 'https://api.wlvpn.com/v2/';
 
-    
+
     public function __construct()
     {
         $this->client = new Client(
@@ -91,14 +91,12 @@ class VPN
     }
 
     /**
-     * Usage report is a POST request
-     *
-     * @param int    $accountId
+     * @param int $accountId
      * @param string $startDate
-     * @param array  $metrics
+     * @param array $metrics
      * @param string $endDate
      *
-     * @return json
+     * @return mixed
      * @throws WLVPNResponseException
      */
     public function usageReport(int $accountId, string $startDate, array $metrics, string $endDate)
@@ -109,7 +107,7 @@ class VPN
         ];
 
         if ($endDate) {
-            $data['end_date'] = $endDate,
+            $data['end_date'] = $endDate;
         }
 
         $endpoint = $this->endpoint.'customers/'.$accountId.'/usage-report';
