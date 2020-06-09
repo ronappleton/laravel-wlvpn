@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RonAppleton\WLVPN\Enums;
 
-use Guzzle\Http\Message\Response as GuzzleResponse;
+use GuzzleHttp\Psr7\Response as GuzzleResponse;
 use RonAppleton\WLVPN\Exceptions\WLVPNResponseException;
 
 class Response
