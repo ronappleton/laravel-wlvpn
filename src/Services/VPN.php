@@ -66,17 +66,19 @@ class VPN
     /**
      * Update account is a PUT request
      *
-     * @param int    $accountStatus
+     * @param int $accountId
+     * @param int $accountStatus
      * @param string $password
-     *
-     * @return json
+     * @param string|null $closeDate
+     * 
+     * @return mixed
      * @throws WLVPNResponseException
      */
-    public function updateAccount(int $accountId, int $accountStatus, string $password = null)
+    public function updateAccount(int $accountId, int $accountStatus, string $password = null, string $closeDate = null)
     {
         $data = [
-          "acct_status_id" => $accountStatus,
-          "acct_group_id" => config('wlvpn.acct_group_id', 0),
+            "acct_status_id" => $accountStatus,
+            "acct_group_id" => config('wlvpn.acct_group_id', 0),
         ];
 
         if ($password) {
@@ -84,7 +86,7 @@ class VPN
         }
 
         if (config('wlvpn.close_date.close_accounts', true)) {
-            $data['close_date'] = config('wlvpn.close_date.close_date');
+            $data['close_date'] = $closeDate ?? config('wlvpn.close_date.close_date');
         }
 
         $result = $this->client->request('PUT', $this->endpoint.'customers/'.$accountId, ['json' => $data]);
@@ -92,6 +94,8 @@ class VPN
         if (Response::valid($result) && $result->getStatusCode() === Response::SUCCESS) {
             return json_decode($result->getBody()->getContents());
         }
+
+        return false;
     }
 
     /**
