@@ -36,22 +36,24 @@ class VPN
     /**
      * Create account is a POST request
      *
-     * @param int    $userId
+     * @param int $userId
      * @param string $password
      *
+     * @param int|null $acctGroupId
+     * @param null $closeData
      * @return json
      * @throws WLVPNResponseException
      */
-    public function createAccount(int $userId, string $password)
+    public function createAccount(int $userId, string $password, int $acctGroupId = null, $closeData = null)
     {
         $data = [
           'cust_user_id' => $userId,
           'cust_password' => $password,
-          'acct_group_id' => config('wlvpn.acct_group_id', 0),
+          'acct_group_id' => $acctGroupId ?? config('wlvpn.acct_group_id', 0),
         ];
 
         if (config('wlvpn.close_date.close_accounts', true)) {
-            $data['close_date'] = config('wlvpn.close_date.close_date');
+            $data['close_date'] = $closeData ?? config('wlvpn.close_date.close_date');
         }
 
         $result = $this->client->request('POST', $this->endpoint.'customers', ['json' => $data]);
