@@ -17,7 +17,8 @@
   "require": {
     "php": ">=7.0",
     "guzzlehttp/guzzle": "~6.0",
-    "nesbot/carbon": "^2.33"
+    "nesbot/carbon": "^2.33",
+    "myclabs/php-enum": "^1.7"
   },
   "autoload": {
     "psr-4": {

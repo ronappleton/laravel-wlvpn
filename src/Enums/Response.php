@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace RonAppleton\WLVPN\Enums;
 
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
+use MyCLabs\Enum\Enum;
 use RonAppleton\WLVPN\Exceptions\WLVPNResponseException;
 
-class Response
+class Response extends Enum
 {
     const SUCCESS = 200;
     const NO_CONTENT = 204;
@@ -22,7 +23,7 @@ class Response
 
     public static function valid(GuzzleResponse $response): bool
     {
-        if (in_array($response->getStatusCode(), self::getConstList(), true)) {
+        if (self::isValid($response->getStatusCode())) {
             return true;
         }
 
