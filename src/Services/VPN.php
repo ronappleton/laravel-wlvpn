@@ -27,7 +27,7 @@ class VPN
           [
             'auth' => [
               'api-key',
-              env('WLVPN_API_KEY', ''),
+                config('wlvpn.api_key', 'abcdef'),
             ],
           ]
         );

@@ -10,7 +10,7 @@ return [
       | reseller account
       |
       */
-  'acct_group_id' => 0,
+    'acct_group_id' => 0,
 
     /*
       |--------------------------------------------------------------------------
@@ -20,8 +20,10 @@ return [
       | WLVPN can be provided with a date upon which to close account
       |
       */
-  'close_date' => [
-    'close_accounts' => true,
-    'close_date' => Carbon\Carbon::now()->addMonth()->format('Y-m-d'),
-  ],
+    'close_date' => [
+        'close_accounts' => true,
+        'close_date' => Carbon\Carbon::now()->addMonth()->format('Y-m-d'),
+    ],
+
+    'api_key' => env('WLVPN_API_KEY', 'abcdef'),
 ];
