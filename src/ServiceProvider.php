@@ -24,7 +24,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function getConfigPath(): string
     {
-        return config_path('wlvpn.php');
+        return app()->configPath('wlvpn.php');
     }
 
     /**
@@ -34,6 +34,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function publishConfig($configPath)
     {
-        $this->publishes([$configPath => config_path('wlvpn.php')], 'config');
+        $this->publishes([$configPath => $this->getConfigPath()], 'config');
     }
 }
