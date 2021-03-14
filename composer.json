@@ -16,7 +16,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "guzzlehttp/guzzle": "~6.0",
+    "guzzlehttp/guzzle": "^7.0.1",
     "nesbot/carbon": "^2.33",
     "myclabs/php-enum": "^1.7",
     "ext-json": "*"
