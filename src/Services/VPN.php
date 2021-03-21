@@ -154,7 +154,7 @@ class VPN
      * @return bool
      * @throws WLVPNResponseException
      */
-    public function createLimitation(int $accountId, string $type = 'rate-limit', $value)
+    public function createLimitation(int $accountId, $value, string $type = 'rate-limit')
     {
         $data = [
           'limitations' => [
@@ -184,7 +184,7 @@ class VPN
      * @return bool
      * @throws WLVPNResponseException
      */
-    public function updateLimitation(int $accountId, string $type = 'rate-limit', $value)
+    public function updateLimitation(int $accountId, $value, string $type = 'rate-limit')
     {
         $data = [
           'limitations' => [
